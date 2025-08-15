@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customizable Clock</title>
+  <link rel="stylesheet" href="styles.css">
+  </head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 8v5l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <h1>LOCK IN</h1>
+      </div>
+      <button id="resetBtn" class="btn" title="Reset settings">Reset</button>
+    </header>
+
+    <div class="grid">
+      <section class="clock-area panel">
+        <div class="display">
+          
+          <div class="digital" id="digital">
+            <div class="time">
+              <h2 id="time">00:00</h2>
+              <span id="seconds" class="seconds">00</span>
+              <span id="ampm" class="ampm"></span>
+            </div>
+            <div class="date" id="date">—</div>
+          </div>
+
+          
+          <div class="analog-wrap">
+            <div class="analog" id="analog" aria-label="Analog Clock">
+              
+              <div class="hand hour" id="hHand"></div>
+              <div class="hand min" id="mHand"></div>
+              <div class="hand sec" id="sHand"></div>
+              <div class="center-dot"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="controls panel" id="controls">
+        <h3>Appearance</h3>
+        <div class="row">
+          <div class="control">
+            <label for="theme">Theme</label>
+            <select id="theme">
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+              <option value="auto">Auto (system)</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="accent">Accent Color</label>
+            <input type="color" id="accent" value="#5b9dff" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="control">
+            <label for="fontSize">Font Size</label>
+            <input type="range" id="fontSize" min="14" max="64" value="40" />
+            <span class="small">Digital time size</span>
+          </div>
+          <div class="control">
+            <label for="mode">Clock Mode</label>
+            <select id="mode">
+              <option value="both">Digital + Analog</option>
+              <option value="digital">Digital only</option>
+              <option value="analog">Analog only</option>
+            </select>
+          </div>
+        </div>
+
+        <h3>Time</h3>
+        <div class="row">
+          <div class="control">
+            <label for="tz">Timezone</label>
+            <select id="tz"></select>
+            <span class="small">Defaults to your device timezone</span>
+          </div>
+          <div class="control">
+            <label for="format">Format</label>
+            <select id="format">
+              <option value="24">24-hour</option>
+              <option value="12">12-hour</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="control">
+            <label><input type="checkbox" id="showSeconds" checked> Show seconds</label>
+          </div>
+          <div class="control">
+            <label for="dateStyle">Date Style</label>
+            <select id="dateStyle">
+              <option value="full">Full</option>
+              <option value="long">Long</option>
+              <option value="medium">Medium</option>
+              <option value="short">Short</option>
+            </select>
+          </div>
+        </div>
+
+        <h3>Alarm (optional)</h3>
+        <div class="row single">
+          <div class="control">
+            <label for="alarmTime">Set Alarm</label>
+            <input type="time" id="alarmTime" />
+            <label style="margin-top:.4rem"><input type="checkbox" id="alarmEnable"> Enable alarm</label>
+            <audio id="beep">
+              <source src="data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQAA" type="audio/mpeg">
+            </audio>
+            <span class="small">Plays a short beep at the chosen time (uses your selected timezone).</span>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>Made with <span class="accent">HTML</span>, <span class="accent">CSS</span>, and <span class="accent">JS</span>.</div>
+          <button id="exportBtn" class="btn">Export Settings</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
